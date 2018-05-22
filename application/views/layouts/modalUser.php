@@ -1,4 +1,4 @@
-<div class="modal modal-warning fade" id="modal-user">
+<div class="modal modal-success fade" id="modal-user">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -35,8 +35,8 @@
                 </table>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Batal</button>
-                <button type="submit" class="btn btn-outline">Simpan</button>
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Batal</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
               </div>
               </div>
             </form>

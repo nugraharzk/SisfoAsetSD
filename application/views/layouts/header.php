@@ -34,7 +34,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-warning btn-flat" data-toggle="modal" data-target="#modal-user">Ubah Akun</a>
+                  <a href="#" class="btn btn-success btn-flat" data-toggle="modal" data-target="#modal-user">Ubah Akun</a>
                 </div>
                 <div class="pull-right">
                   <a href="<?= site_url('auth/logout') ?>" class="btn btn-danger btn-flat">Keluar</a>

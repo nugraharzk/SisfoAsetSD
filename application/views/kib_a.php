@@ -19,7 +19,7 @@
         
         <div class="box-header with-border">
           <h3 class="box-title"><?= $page_title ?></h4>
-          <a href="" data-toggle="modal" data-target="#modal-success" class="btn btn-success pull-right">Tambah Asset</a>
+          <a href="" data-toggle="modal" data-target="#modal-success" class="btn btn-primary pull-right">Tambah Asset</a>
         </div>
 
         <div class="box-body">
@@ -304,7 +304,7 @@
         <!-- /.modal-dialog -->
       </div>
 
-      <div class="modal modal-success fade" id="modal-success">
+      <div class="modal modal-primary fade" id="modal-success">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
