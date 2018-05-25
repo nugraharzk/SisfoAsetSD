@@ -18,24 +18,7 @@
 			</div>
 
 			<div class="box-body">
-				<table class="table table-hover table-striped">
-					<thead>
-						<tr>
-							<th>Nomor</th>
-							<th>Pesan</th>
-							<th>Waktu</th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php $i=1; foreach ($notif as $data) { ?>
-						<tr>
-							<td><?= $i ?></td>
-							<td><?= $data->pesan ?></td>
-							<td><?= $data->waktu ?></td>
-						</tr>
-						<?php $i++; } ?>
-					</tbody>
-				</table>
+				
 			</div>
 		</div>
 	</section>
