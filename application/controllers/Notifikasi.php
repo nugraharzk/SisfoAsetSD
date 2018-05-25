@@ -10,24 +10,21 @@ class Notifikasi extends CI_Controller {
 		is_logged_in();
 		//Load Dependencies
 		$this->load->library('pagination');
-        $this->load->model('m_user');
-        $this->load->model('m_notifikasi');
+        $this->load->model('M_Notifikasi');
 		//$this->load->model('m_balai');
 		// $this->output->enable_profiler(true);
 
 	}
 
-	// List all your items
-	public function page()
+	public function index()
 	{
-		$this->index();
-	}
-	public function index( $offset = 0 )
-	{
+		$dat['notif'] = $this->M_Notifikasi->getAllNotif();
+		$this->session->set_userdata('page',10);
+
 		$this->load->library('pagination');
 		
 		$config['base_url'] = site_url('notifikasi/page');
-		$config['total_rows'] = $this->m_notifikasi->get_jumlah_records();
+		$config['total_rows'] = $this->M_Notifikasi->get_jumlah_records();
 		$config['per_page'] = 10;
 		$config['uri_segment'] = 3;
 		$config['num_links'] = 3;
@@ -59,26 +56,18 @@ class Notifikasi extends CI_Controller {
 		$dat['paging'] = $this->pagination->create_links();
 
 		//ambil data koleksi
-		$dat['user'] = $this->m_notifikasi->get_all_notifikasi($offset,$config['per_page']);
+		$dat['pageid'] = 'notifikasi';
+		$dat['page_title'] = 'NOTIFIKASI';
+		$dat['page_desc'] = 'Halaman untuk melihat laporan asset.';
+		$dat['select'] = 10;
+		$data['page'] = $this->load->view('notifikasi', $dat, true);
 
-		$data['page_title'] = 'Riwayat';
-		$data['page_desc'] = 'daftar riwayat';
-		$data['page']       = $this->load->view('notifikasi/v_index', $dat, true);
-		$this->load->view('v_base',$data);
+		$this->load->view('layouts/layout',$data);
 	}
 
-	
-
-	//Delete one item
-	public function delete( $id = NULL )
+	public function insertNotif($id)
 	{
-		$id=$this->uri->segment(3);
-		$this->m_user->delete_notifikasi($id);
-
-		$msg = "Delete Notifikasi Berhasil!";
-        $this->session->set_flashdata("k", $msg);
-
-        redirect('notifikasi');
+		$this->M_Notifikasi->insertNotif($id);
 	}
 }
 

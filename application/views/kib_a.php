@@ -19,7 +19,9 @@
         
         <div class="box-header with-border">
           <h3 class="box-title"><?= $page_title ?></h4>
+          <?php if($this->session->userdata('level') == 'Admin'){ ?>
           <a href="" data-toggle="modal" data-target="#modal-success" class="btn btn-primary pull-right">Tambah Asset</a>
+          <?php } ?>
         </div>
 
         <div class="box-body">
@@ -90,6 +92,10 @@
               <?php } ?>
             </tbody>
           </table>
+        </div>
+
+        <div class="box-footer clearfix">
+          <?php echo $links ?>
         </div>
       </div>
 

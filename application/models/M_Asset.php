@@ -14,6 +14,25 @@ class M_Asset extends CI_Model {
 		return $this->db->select('*')->get('kib_a')->result();
 	}
 
+	public function getOneKiba($id)
+	{
+		return $this->db->select('*')->where('id_barang',$id)->get('kib_a')->row();
+	}
+
+	public function getKiba($limit,$start)
+	{
+		$this->db->limit($limit, $start);
+        $query = $this->db->get("kib_a");
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+	}
+
 	public function insertKibA($data)
 	{
 		$this->db->insert('kib_a',$data);
@@ -29,9 +48,8 @@ class M_Asset extends CI_Model {
 		$this->db->where('id_barang',$id)->delete('kib_a');
 	}
 
-	public function get_jumlah_records()
+	public function count_kiba()
 	{
-		//hitung jumlah semua records
 		return $this->db->count_all('kib_a');
 	}
 

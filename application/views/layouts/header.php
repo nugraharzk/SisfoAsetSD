@@ -28,7 +28,8 @@
                 <img src="<?php echo base_url() ?>assets/dist/img/user1.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  <?=$this->session->userdata('nama')?>
+                  <b><?=$this->session->userdata('nama')?></b>
+                  <small><?=$this->session->userdata('level')?></small>
                 </p>
               </li>
               <!-- Menu Footer-->

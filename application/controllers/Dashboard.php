@@ -20,7 +20,7 @@ class Dashboard extends CI_Controller {
 		$data['page_title'] = 'Dasbor';
 		$data['page_desc'] = 'Halaman dasbor';
 		$data['id'] = $this->session->userdata('user_id');
-		$data['select'] = 1;
+		$this->session->set_userdata('page',1);
 		$data['condition'] = false;
 		$data['page']       = $this->load->view('dashboard', '', true);
 

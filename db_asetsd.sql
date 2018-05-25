@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 23/05/2018 02:01:58
+ Date: 25/05/2018 12:50:57
 */
 
 SET NAMES utf8mb4;
@@ -26,7 +26,7 @@ CREATE TABLE `kib_a`  (
   `reg` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `nama_barang` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `luas` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `tahun_peroleh` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `tahun_peroleh` year NULL DEFAULT NULL,
   `alamat` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `status_hak` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `penggunaan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE `kib_a`  (
   `sumber_dana` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `status_barang` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `kondisi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `harga` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `harga` int(11) NULL DEFAULT NULL,
   `catatan_barang_baik` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `catatan_barang_rusak_ringan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `catatan_barang_rusak_berat` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
@@ -49,8 +49,26 @@ CREATE TABLE `kib_a`  (
 -- ----------------------------
 -- Records of kib_a
 -- ----------------------------
-INSERT INTO `kib_a` VALUES ('0101110400257085708', '0003', 'Tanah Bangunan Pendidikan dan Latihan (Sekolah)', '814', '1998', 'Jl. Cigondewah Rahayu Kel/Desa. Cigondewah Rahayu Kec. Bandung Kulon / Wil. Tegallega Kota Bandung', 'Pakai', 'SDN 256 Cigondewah Hilir Bandung', 'Pembelian', '-', 'Inventaris', 'Baik', '412000000\r\n', '412000000\r\n', '-', '-', '412000000\r\n', '1', '-', 'ADA\r\n', 'SDN CIGONDEWAH HILIR\r\n');
-INSERT INTO `kib_a` VALUES ('0101110400257085709', '0004', 'Gedung RKB', '500', '2012', 'Jl. Cigondewah Rahayu Kel/Desa. Cigondewah Rahayu Kec. Bandung Kulon / Wil. Tegallega Kota Bandung', 'Pakai', 'Baik', 'Pembelian', '-', 'Inventaris', 'Baik', '412000000\r\n', '412000000\r\n', '-', '-', '412000000\r\n', '1', '-', 'ADA', 'SDN CIGONDEWAH HILIR\r\n');
+INSERT INTO `kib_a` VALUES ('0101110400257085708', '0003', 'Tanah Bangunan Pendidikan dan Latihan (Sekolah)', '814', 1998, 'Jl. Cigondewah Rahayu Kel/Desa. Cigondewah Rahayu Kec. Bandung Kulon / Wil. Tegallega Kota Bandung', 'Pakai', 'SDN 256 Cigondewah Hilir Bandung', 'Pembelian', '-', 'Inventaris', 'Baik', 412000000, '412000000\r\n', '-', '-', '412000000\r\n', '1', '-', 'ADA\r\n', 'SDN CIGONDEWAH HILIR\r\n');
+INSERT INTO `kib_a` VALUES ('0101110400257085709', '0004', 'Gedung RKB', '500', 2012, 'Jl. Cigondewah Rahayu Kel/Desa. Cigondewah Rahayu Kec. Bandung Kulon / Wil. Tegallega Kota Bandung', 'Pakai', 'Baik', 'Pembelian', '-', 'Inventaris', 'Baik', 412000000, '412000000\r\n', '-', '-', '412000000\r\n', '1', '-', 'ADA', 'SDN CIGONDEWAH HILIR\r\n');
+
+-- ----------------------------
+-- Table structure for notifikasi
+-- ----------------------------
+DROP TABLE IF EXISTS `notifikasi`;
+CREATE TABLE `notifikasi`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pesan` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `waktu` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of notifikasi
+-- ----------------------------
+INSERT INTO `notifikasi` VALUES (4, 'Pengadaan KIB A Baru : Bangku Sekolah', '2018-05-25 12:42:40.561944');
+INSERT INTO `notifikasi` VALUES (5, 'Penghapusan Bangku Sekolah Pada KIB A', '2018-05-25 12:46:06.285854');
+INSERT INTO `notifikasi` VALUES (6, 'Penghapusan Gedung Baru Pada KIB A', '2018-05-25 12:47:17.886483');
 
 -- ----------------------------
 -- Table structure for users
