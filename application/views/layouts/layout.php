@@ -115,6 +115,20 @@
 
   <?php if ($pageid == 'kiba') { ?>
 <script src="<?= base_url('assets/page/kibaquery.js'); ?>"></script>
+  <?php }elseif ($pageid == 'kibb'){ ?>
+<script src="<?= base_url('assets/page/kibbquery.js'); ?>"></script>
+  <?php }elseif ($pageid == 'kibc'){ ?>
+<script src="<?= base_url('assets/page/kibcquery.js'); ?>"></script>
+  <?php }elseif ($pageid == 'kibd'){ ?>
+<script src="<?= base_url('assets/page/kibdquery.js'); ?>"></script>
+  <?php }elseif ($pageid == 'kibe'){ ?>
+<script src="<?= base_url('assets/page/kibequery.js'); ?>"></script>
+  <?php }elseif ($pageid == 'kibf'){ ?>
+<script src="<?= base_url('assets/page/kibfquery.js'); ?>"></script>
+  <?php }elseif ($pageid == 'kirkantor'){ ?>
+<script src="<?= base_url('assets/page/kirkantorquery.js'); ?>"></script>
+  <?php }elseif ($pageid == 'atb'){ ?>
+<script src="<?= base_url('assets/page/atbquery.js'); ?>"></script>
   <?php } ?>
 
 </body>

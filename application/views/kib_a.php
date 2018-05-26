@@ -216,9 +216,9 @@
             <!-- /.modal-content -->
           </div>
           <!-- /.modal-dialog -->
-        </div>
+      </div>
 
-        <div class="modal modal-info fade" id="modal-info">
+      <div class="modal modal-info fade" id="modal-info">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">

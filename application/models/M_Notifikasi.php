@@ -32,6 +32,20 @@ class M_Notifikasi extends CI_Model {
 		return $this->db->count_all('notifikasi');
 	}
 
+	public function getNotif($limit,$start)
+	{
+		$this->db->limit($limit, $start);
+        $query = $this->db->get('notifikasi');
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $data[] = $row;
+            }
+            return $data;
+        }
+        return false;
+	}
+
 }
 
 /* End of file M_asset.php */

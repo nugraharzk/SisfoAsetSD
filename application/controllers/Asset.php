@@ -51,7 +51,7 @@ class Asset extends CI_Controller {
 		$this->pagination->initialize($config);
 		
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$dat['asset'] = $this->M_Asset->getKiba($config["per_page"],$page);
+		$dat['asset'] = $this->M_Asset->getAsset("kib_a",$config["per_page"],$page);
 		
 		$dat['links'] = $this->pagination->create_links();
 
@@ -103,7 +103,7 @@ class Asset extends CI_Controller {
 
 		$config = array();
         $config["base_url"] = site_url('asset/kib_b');
-        $config["total_rows"] = $this->M_Asset->count_kiba();
+        $config["total_rows"] = $this->M_Asset->count_kibb();
         $config["per_page"] = 5;
         $config["uri_segment"] = 3;
         $config['num_links'] = 3;
@@ -129,7 +129,7 @@ class Asset extends CI_Controller {
 		$this->pagination->initialize($config);
 		
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$dat['asset'] = $this->M_Asset->getKiba($config["per_page"],$page);
+		$dat['asset'] = $this->M_Asset->getAsset("kib_b",$config["per_page"],$page);
 		
 		$dat['links'] = $this->pagination->create_links();
 
@@ -141,13 +141,48 @@ class Asset extends CI_Controller {
 		$this->load->view('layouts/layout',$data);
 	}
 
+	public function tambahKibB()
+	{
+		$input = $this->input->post();
+		
+		$this->M_Asset->insertKibB($input);
+		$data['table'] = 'KIB B';
+		$data['row'] = $input['nama_barang'];
+
+		$this->M_Notifikasi->insertNotif(1,$data);
+
+		redirect('asset/kib_b');
+	}
+
+	public function editKibB()
+	{
+		$id = $this->input->post('id_barang');
+		$input = $this->input->post();
+		$this->M_Asset->updateKibB($id,$input);
+
+		redirect('asset/kib_b');
+	}
+
+	public function deleteKibB($id)
+	{
+		$asset = $this->M_Asset->getOneKibB($id);
+		$this->M_Asset->deleteKibB($id);
+
+		$data['table'] = 'KIB B';
+		$data['row'] = $asset->nama_barang;
+
+		$this->M_Notifikasi->insertNotif(2,$data);
+
+		redirect('asset/kib_b');
+	}
+
 	public function kir_kantor()
 	{
 		$this->session->set_userdata('page',4);
 
 		$config = array();
         $config["base_url"] = site_url('asset/kir_kantor');
-        $config["total_rows"] = $this->M_Asset->count_kiba();
+        $config["total_rows"] = $this->M_Asset->count_kirkantor();
         $config["per_page"] = 5;
         $config["uri_segment"] = 3;
         $config['num_links'] = 3;
@@ -173,7 +208,7 @@ class Asset extends CI_Controller {
 		$this->pagination->initialize($config);
 		
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$dat['asset'] = $this->M_Asset->getKiba($config["per_page"],$page);
+		$dat['asset'] = $this->M_Asset->getAsset("kir_kantor",$config["per_page"],$page);
 		
 		$dat['links'] = $this->pagination->create_links();
 
@@ -185,13 +220,48 @@ class Asset extends CI_Controller {
 		$this->load->view('layouts/layout',$data);
 	}
 
+	public function tambahKir()
+	{
+		$input = $this->input->post();
+		
+		$this->M_Asset->insertKir($input);
+		$data['table'] = 'KIR KANTOR';
+		$data['row'] = $input['nama_barang'];
+
+		$this->M_Notifikasi->insertNotif(1,$data);
+
+		redirect('asset/kir_kantor');
+	}
+
+	public function editKir()
+	{
+		$id = $this->input->post('id_barang');
+		$input = $this->input->post();
+		$this->M_Asset->updateKir($id,$input);
+
+		redirect('asset/kir_kantor');
+	}
+
+	public function deleteKir($id)
+	{
+		$asset = $this->M_Asset->getOneKir($id);
+		$this->M_Asset->deleteKir($id);
+
+		$data['table'] = 'KIR KANTOR';
+		$data['row'] = $asset->nama_barang;
+
+		$this->M_Notifikasi->insertNotif(2,$data);
+
+		redirect('asset/kir_kantor');
+	}
+
 	public function kib_c()
 	{
 		$this->session->set_userdata('page',5);
 
 		$config = array();
         $config["base_url"] = site_url('asset/kib_c');
-        $config["total_rows"] = $this->M_Asset->count_kiba();
+        $config["total_rows"] = $this->M_Asset->count_kibc();
         $config["per_page"] = 5;
         $config["uri_segment"] = 3;
         $config['num_links'] = 3;
@@ -217,7 +287,7 @@ class Asset extends CI_Controller {
 		$this->pagination->initialize($config);
 		
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$dat['asset'] = $this->M_Asset->getKiba($config["per_page"],$page);
+		$dat['asset'] = $this->M_Asset->getAsset("kib_c",$config["per_page"],$page);
 		
 		$dat['links'] = $this->pagination->create_links();
 
@@ -229,13 +299,48 @@ class Asset extends CI_Controller {
 		$this->load->view('layouts/layout',$data);
 	}
 
+	public function tambahKibc()
+	{
+		$input = $this->input->post();
+		
+		$this->M_Asset->insertKibc($input);
+		$data['table'] = 'KIB C';
+		$data['row'] = $input['nama_barang'];
+
+		$this->M_Notifikasi->insertNotif(1,$data);
+
+		redirect('asset/kib_c');
+	}
+
+	public function editKibc()
+	{
+		$id = $this->input->post('id_barang');
+		$input = $this->input->post();
+		$this->M_Asset->updateKibc($id,$input);
+
+		redirect('asset/kib_c');
+	}
+
+	public function deleteKibc($id)
+	{
+		$asset = $this->M_Asset->getOneKibc($id);
+		$this->M_Asset->deleteKibc($id);
+
+		$data['table'] = 'KIB C';
+		$data['row'] = $asset->nama_barang;
+
+		$this->M_Notifikasi->insertNotif(2,$data);
+
+		redirect('asset/kib_c');
+	}
+
 	public function kib_d()
 	{
 		$this->session->set_userdata('page',6);
 
 		$config = array();
         $config["base_url"] = site_url('asset/kib_d');
-        $config["total_rows"] = $this->M_Asset->count_kiba();
+        $config["total_rows"] = $this->M_Asset->count_kibd();
         $config["per_page"] = 5;
         $config["uri_segment"] = 3;
         $config['num_links'] = 3;
@@ -261,7 +366,7 @@ class Asset extends CI_Controller {
 		$this->pagination->initialize($config);
 		
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$dat['asset'] = $this->M_Asset->getKiba($config["per_page"],$page);
+		$dat['asset'] = $this->M_Asset->getAsset("kib_d",$config["per_page"],$page);
 		
 		$dat['links'] = $this->pagination->create_links();
 
@@ -279,7 +384,7 @@ class Asset extends CI_Controller {
 
 		$config = array();
         $config["base_url"] = site_url('asset/kib_e');
-        $config["total_rows"] = $this->M_Asset->count_kiba();
+        $config["total_rows"] = $this->M_Asset->count_kibe();
         $config["per_page"] = 5;
         $config["uri_segment"] = 3;
         $config['num_links'] = 3;
@@ -305,7 +410,7 @@ class Asset extends CI_Controller {
 		$this->pagination->initialize($config);
 		
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$dat['asset'] = $this->M_Asset->getKiba($config["per_page"],$page);
+		$dat['asset'] = $this->M_Asset->getAsset("kib_e",$config["per_page"],$page);
 		
 		$dat['links'] = $this->pagination->create_links();
 
@@ -323,7 +428,7 @@ class Asset extends CI_Controller {
 
 		$config = array();
         $config["base_url"] = site_url('asset/kib_f');
-        $config["total_rows"] = $this->M_Asset->count_kiba();
+        $config["total_rows"] = $this->M_Asset->count_kibf();
         $config["per_page"] = 5;
         $config["uri_segment"] = 3;
         $config['num_links'] = 3;
@@ -349,7 +454,7 @@ class Asset extends CI_Controller {
 		$this->pagination->initialize($config);
 		
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$dat['asset'] = $this->M_Asset->getKiba($config["per_page"],$page);
+		$dat['asset'] = $this->M_Asset->getAsset("kib_f",$config["per_page"],$page);
 		
 		$dat['links'] = $this->pagination->create_links();
 
@@ -367,7 +472,7 @@ class Asset extends CI_Controller {
 
 		$config = array();
         $config["base_url"] = site_url('asset/atb');
-        $config["total_rows"] = $this->M_Asset->count_kiba();
+        $config["total_rows"] = $this->M_Asset->count_atb();
         $config["per_page"] = 5;
         $config["uri_segment"] = 3;
         $config['num_links'] = 3;
@@ -393,7 +498,7 @@ class Asset extends CI_Controller {
 		$this->pagination->initialize($config);
 		
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$dat['asset'] = $this->M_Asset->getKiba($config["per_page"],$page);
+		$dat['asset'] = $this->M_Asset->getAsset("atb",$config["per_page"],$page);
 		
 		$dat['links'] = $this->pagination->create_links();
 

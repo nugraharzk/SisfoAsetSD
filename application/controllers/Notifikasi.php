@@ -18,17 +18,18 @@ class Notifikasi extends CI_Controller {
 
 	public function index()
 	{
-		$dat['notif'] = $this->M_Notifikasi->getAllNotif();
+		// $dat['notif'] = $this->M_Notifikasi->getAllNotif();
 		$this->session->set_userdata('page',10);
 
 		$this->load->library('pagination');
 		
-		$config['base_url'] = site_url('notifikasi/page');
-		$config['total_rows'] = $this->M_Notifikasi->get_jumlah_records();
-		$config['per_page'] = 10;
-		$config['uri_segment'] = 3;
-		$config['num_links'] = 3;
-		$config['full_tag_open'] = '<ul class="pagination pagination-sm no-margin pull-right">';
+		$config = array();
+        $config["base_url"] = site_url('notifikasi/index');
+        $config["total_rows"] = $this->M_Notifikasi->get_jumlah_records();
+        $config["per_page"] = 5;
+        $config["uri_segment"] = 3;
+        $config['num_links'] = 3;
+        $config['full_tag_open'] = '<ul class="pagination pagination-sm no-margin pull-right">';
 		$config['full_tag_close'] = '</ul>';
 		$config['first_link'] = 'First';
 		$config['first_tag_open'] = '<li>';
@@ -38,20 +39,19 @@ class Notifikasi extends CI_Controller {
 		$config['last_link'] = 'Last';
 		$config['last_tag_open'] = '<li>';
 		$config['last_tag_close'] = '</li>';
-		$config['next_link'] = '&gt;';
+		$config['next_link'] = 'Next';
 		$config['next_tag_open'] = '<li>';
 		$config['next_tag_close'] = '</li>';
-		$config['prev_link'] = '&lt;';
+		$config['prev_link'] = 'Back';
 		$config['prev_tag_open'] = '<li>';
 		$config['prev_tag_close'] = '</li>';
 		$config['cur_tag_open'] = '<li><a href="#">';
 		$config['cur_tag_close'] = '</a></li>';
 
-		$offset = $this->uri->segment(3);
-		
 		$this->pagination->initialize($config);
-
 		
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$dat['notif'] = $this->M_Notifikasi->getNotif($config["per_page"],$page);
 		
 		$dat['paging'] = $this->pagination->create_links();
 

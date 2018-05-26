@@ -37,6 +37,10 @@
 					</tbody>
 				</table>
 			</div>
+
+			<div class="box-footer clearfix">
+				<?= $paging; ?>
+			</div>
 		</div>
 	</section>
 
