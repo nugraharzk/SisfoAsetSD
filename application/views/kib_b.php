@@ -26,9 +26,9 @@
               <tr>
                 <th>ID</th>
                 <th>Nama</th>
-                <th>Tahun</th>
-                <th>Status</th>
                 <th>Harga</th>
+                <th>Masa Manfaat</th>
+                <th>Penyusutan Akhir</th>
                 <?php if($this->session->userdata('level') == 'Admin'){ ?>
                 <th>Action</th>
                 <?php } ?>
@@ -61,40 +61,44 @@
                     data-data_inven="<?= $kibb->data_diinventarisasi; ?>"
                     data-nilai_inven="<?= $kibb->nilai_inventarisasi; ?>"
                     data-posisi="<?= $kibb->posisi; ?>"
+                    data-masa="<?= $kibb->masa_manfaat; ?>"
+                    data-penyusutan="<?= $kibb->penyusutan_akhir; ?>"
                     data-pemakai_barang="<?= $kibb->pemakai_barang; ?>"
                     data-korelasi="<?= $kibb->korelasi_dapodik; ?>">
                     <?= $kibb->nama_barang; ?>
                   </a>
                 </td>
-                <td><?= $kibb->tahun_peroleh; ?></td>
-                <td><?= $kibb->status_barang; ?></td>
                 <td><?= $kibb->harga; ?></td>
+                <td><?= $kibb->masa_manfaat; ?></td>
+                <td><?= $kibb->penyusutan_akhir; ?></td>
                 <td>
                   <?php if($this->session->userdata('level') == 'Admin'){ ?>
                   <button type="button" class="btn btn-warning btnEdit" data-toggle="modal" data-target="#modal-warning" 
-					data-id="<?= $kibb->id_barang; ?>" 
-					data-reg="<?= $kibb->reg; ?>" 
-					data-nama="<?= $kibb->nama_barang; ?>" 
-					data-type="<?= $kibb->type; ?>" 
-					data-ukuran="<?= $kibb->ukuran; ?>" 
-					data-bahan="<?= $kibb->bahan; ?>" 
-					data-tahun="<?= $kibb->tahun_peroleh; ?>" 
-					data-nomor_mesin="<?= $kibb->nomor_mesin; ?>" 
-					data-peroleh="<?= $kibb->cara_peroleh ?>" 
-					data-dana="<?= $kibb->sumber_dana ?>" 
-					data-sbarang="<?= $kibb->status_barang; ?>"
-					data-kondisi="<?= $kibb->kondisi; ?>"
-					data-penggunaan="<?= $kibb->penggunaan; ?>" 
-					data-harga="<?= $kibb->harga; ?>"
-					data-kontrak="<?= $kibb->kontrak; ?>"
-					data-ctt_baik="<?= $kibb->catatan_barang_baik; ?>"
-					data-ctt_ringan="<?= $kibb->catatan_barang_rusak_ringan; ?>"
-					data-ctt_berat="<?= $kibb->catatan_barang_rusak_berat; ?>"
-					data-data_inven="<?= $kibb->data_diinventarisasi; ?>"
-					data-nilai_inven="<?= $kibb->nilai_inventarisasi; ?>"
-					data-posisi="<?= $kibb->posisi; ?>"
-					data-pemakai_barang="<?= $kibb->pemakai_barang; ?>"
-					data-korelasi="<?= $kibb->korelasi_dapodik; ?>">
+          data-id="<?= $kibb->id_barang; ?>" 
+          data-reg="<?= $kibb->reg; ?>" 
+          data-nama="<?= $kibb->nama_barang; ?>" 
+          data-type="<?= $kibb->type; ?>" 
+          data-ukuran="<?= $kibb->ukuran; ?>" 
+          data-bahan="<?= $kibb->bahan; ?>" 
+          data-tahun="<?= $kibb->tahun_peroleh; ?>" 
+          data-nomor_mesin="<?= $kibb->nomor_mesin; ?>" 
+          data-peroleh="<?= $kibb->cara_peroleh ?>" 
+          data-dana="<?= $kibb->sumber_dana ?>" 
+          data-sbarang="<?= $kibb->status_barang; ?>"
+          data-kondisi="<?= $kibb->kondisi; ?>"
+          data-penggunaan="<?= $kibb->penggunaan; ?>" 
+          data-harga="<?= $kibb->harga; ?>"
+          data-kontrak="<?= $kibb->kontrak; ?>"
+          data-ctt_baik="<?= $kibb->catatan_barang_baik; ?>"
+          data-ctt_ringan="<?= $kibb->catatan_barang_rusak_ringan; ?>"
+          data-ctt_berat="<?= $kibb->catatan_barang_rusak_berat; ?>"
+          data-data_inven="<?= $kibb->data_diinventarisasi; ?>"
+          data-nilai_inven="<?= $kibb->nilai_inventarisasi; ?>"
+          data-posisi="<?= $kibb->posisi; ?>"
+          data-masa="<?= $kibb->masa_manfaat; ?>"
+          data-penyusutan="<?= $kibb->penyusutan_akhir; ?>"
+          data-pemakai_barang="<?= $kibb->pemakai_barang; ?>"
+          data-korelasi="<?= $kibb->korelasi_dapodik; ?>">
                       Edit
                   </button>
                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger" data-id="<?= $kibb->id_barang; ?>">Hapus</button>
@@ -228,6 +232,11 @@
                     <td>Korelasi Dapodik</td>
                     <td>&emsp;</td>
                     <td><input class="form-control kibbKorelasi"  type="text" name="korelasi_dapodik" style="color: black; width: 380%;"></td>
+                  </tr>
+                  <tr>
+                    <td>Masa Manfaat</td>
+                    <td>&emsp;</td>
+                    <td><input class="form-control kibbMasaManfaat" type="text" name="masa_manfaat" style="color: black; width: 380%;"></td>
                   </tr>
                   <input type="hidden" name="id_barang" class="kibbId">
                 </table>
@@ -384,6 +393,16 @@
                     <td>&emsp;</td>
                     <td><input class="form-control kib_bKorelasi"  type="text" name="korelasi_dapodik" style="color: black; width: 380%;" disabled></td>
                   </tr>
+                  <tr>
+                    <td>Masa Manfaat</td>
+                    <td>&emsp;</td>
+                    <td><input class="form-control kibbMasaManfaat" type="text" name="masa_manfaat" style="color: black; width: 380%;" disabled=""></td>
+                  </tr>
+                  <tr>
+                    <td>Penyusutan Akhir</td>
+                    <td>&emsp;</td>
+                    <td><input class="form-control kibbPenyusutan" type="text" name="penyusutan_akhir" style="color: black; width: 380%;" disabled=""></td>
+                  </tr>
                 </table>
               </div>
               <div class="modal-footer">
@@ -521,6 +540,11 @@
                     <td>Korelasi Dapodik</td>
                     <td>&emsp;</td>
                     <td><input class="form-control"  type="text" name="korelasi_dapodik" style="color: black; width: 380%;"></td>
+                  </tr>
+                  <tr>
+                    <td>Masa Manfaat</td>
+                    <td>&emsp;</td>
+                    <td><input class="form-control" type="text" name="masa_manfaat" style="color: black; width: 380%;"></td>
                   </tr>
                 </table>
               </div>

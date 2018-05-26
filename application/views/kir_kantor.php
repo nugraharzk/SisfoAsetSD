@@ -26,9 +26,9 @@
               <tr>
                 <th>ID</th>
                 <th>Nama</th>
-                <th>Tahun</th>
-                <th>Jumlah</th>
                 <th>Harga</th>
+                <th>Masa Manfaat</th>
+                <th>Penyusutan Akhir</th>
                 <?php if($this->session->userdata('level') == 'Admin'){ ?>
                 <th>Action</th>
                 <?php } ?>
@@ -44,20 +44,23 @@
                     data-nama="<?= $kir->nama_barang; ?>" 
                     data-tahun="<?= $kir->tahun_beli; ?>" 
                     data-jumlah="<?= $kir->jumlah; ?>" 
+                    data-masa="<?= $kir->masa_manfaat; ?>" 
+					          data-penyusutan="<?= $kir->penyusutan_akhir; ?>" 
                     data-harga="<?= $kir->harga; ?>">
                     <?= $kir->nama_barang; ?>
                   </a>
                 </td>
-                <td><?= $kir->tahun_beli; ?></td>
-                <td><?= $kir->jumlah; ?></td>
-                <td><?= $kir->harga; ?></td>
+                <td>Rp.<?= $kir->harga; ?></td>
+                <td><?= $kir->masa_manfaat; ?> Tahun</td>
+                <td>Rp.<?= $kir->penyusutan_akhir; ?></td>
                 <td>
                   <?php if($this->session->userdata('level') == 'Admin'){ ?>
                   <button type="button" class="btn btn-warning btnEdit" data-toggle="modal" data-target="#modal-warning" 
-					data-id="<?= $kir->id_barang; ?>" 
-					data-nama="<?= $kir->nama_barang; ?>" 
-					data-tahun="<?= $kir->tahun_beli; ?>" 
-					data-jumlah="<?= $kir->jumlah; ?>" 
+          data-id="<?= $kir->id_barang; ?>" 
+          data-nama="<?= $kir->nama_barang; ?>" 
+          data-tahun="<?= $kir->tahun_beli; ?>" 
+          data-jumlah="<?= $kir->jumlah; ?>" 
+          data-masa="<?= $kir->masa_manfaat; ?>" 
 					data-harga="<?= $kir->harga; ?>">
                       Edit
                   </button>
@@ -69,6 +72,10 @@
             </tbody>
           </table>
 			</div>
+
+      <div class="box-footer clearfix">
+        
+      </div>
 		</div>
 	</section>
 
@@ -86,22 +93,27 @@
                   <tr>
                     <td>Nama Barang</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control kirNama" type="text" name="nama_barang" style="color: black; width: 250%;"></td>
+                    <td><input class="form-control kirNama" type="text" name="nama_barang" style="color: black; width: 200%;"></td>
                   </tr>
                   <tr>
                     <td>Tahun Beli</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control kirTahun"  type="text" name="tahun_beli" style="color: black; width: 250%;"></td>
+                    <td><input class="form-control kirTahun"  type="text" name="tahun_beli" style="color: black; width: 200%;"></td>
                   </tr>
                   <tr>
                     <td>Jumlah</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control kirJumlah"  type="text" name="jumlah" style="color: black; width: 250%;"></td>
+                    <td><input class="form-control kirJumlah"  type="text" name="jumlah" style="color: black; width: 200%;"></td>
                   </tr>
                   <tr>
                     <td>Harga</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control kirHarga"  type="text" name="harga" style="color: black; width: 250%;"></td>
+                    <td><input class="form-control kirHarga"  type="text" name="harga" style="color: black; width: 200%;"></td>
+                  </tr>
+                  <tr>
+                    <td>Masa Manfaat</td>
+                    <td>&emsp;</td>
+                    <td><input class="form-control kirMasaManfaat"  type="text" name="masa_manfaat" style="color: black; width: 200%;"></td>
                   </tr>
                   <input type="hidden" name="id_barang" class="kirId">
                 </table>
@@ -151,22 +163,32 @@
                   <tr>
                     <td>Nama Barang</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control kir_Nama" type="text" name="nama_barang" style="color: black; width: 250%;" disabled></td>
+                    <td><input class="form-control kir_Nama" type="text" name="nama_barang" style="color: black; width: 200%;" disabled></td>
                   </tr>
                   <tr>
                     <td>Tahun Beli</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control kir_Tahun"  type="text" name="tahun_beli" style="color: black; width: 250%;" disabled></td>
+                    <td><input class="form-control kir_Tahun"  type="text" name="tahun_beli" style="color: black; width: 200%;" disabled></td>
                   </tr>
                   <tr>
                     <td>Jumlah</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control kir_Jumlah"  type="text" name="jumlah" style="color: black; width: 250%;" disabled></td>
+                    <td><input class="form-control kir_Jumlah"  type="text" name="jumlah" style="color: black; width: 200%;" disabled></td>
                   </tr>
                   <tr>
                     <td>Harga</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control kir_Harga"  type="text" name="harga" style="color: black; width: 250%;" disabled></td>
+                    <td><input class="form-control kir_Harga"  type="text" name="harga" style="color: black; width: 200%;" disabled></td>
+                  </tr>
+                  <tr>
+                    <td>Masa Manfaat</td>
+                    <td>&emsp;</td>
+                    <td><input class="form-control kir_MasaManfaat"  type="text" name="masa_manfaat" style="color: black; width: 200%;" disabled></td>
+                  </tr>
+                  <tr>
+                    <td>Penyusutan Akhir</td>
+                    <td>&emsp;</td>
+                    <td><input class="form-control kir_Penyusutan"  type="text" name="penyusutan_akhir" style="color: black; width: 200%;" disabled></td>
                   </tr>
                 </table>
               </div>
@@ -194,27 +216,32 @@
                   <tr>
                     <td>ID Barang</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control" type="text" name="id_barang" style="color: black; width: 250%;" required=""></td>
+                    <td><input class="form-control" type="text" name="id_barang" style="color: black; width: 200%;" required=""></td>
                   </tr>
                   <tr>
                     <td>Nama Barang</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control" type="text" name="nama_barang" style="color: black; width: 250%;" required=""></td>
+                    <td><input class="form-control" type="text" name="nama_barang" style="color: black; width: 200%;" required=""></td>
                   </tr>
                   <tr>
                     <td>Tahun Beli</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control"  type="text" name="tahun_beli" style="color: black; width: 250%;"></td>
+                    <td><input class="form-control"  type="text" name="tahun_beli" style="color: black; width: 200%;"></td>
                   </tr>
                   <tr>
                     <td>Jumlah</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control"  type="text" name="jumlah" style="color: black; width: 250%;"></td>
+                    <td><input class="form-control"  type="text" name="jumlah" style="color: black; width: 200%;"></td>
                   </tr>
                   <tr>
                     <td>Harga</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control"  type="text" name="harga" style="color: black; width: 250%;"></td>
+                    <td><input class="form-control"  type="text" name="harga" style="color: black; width: 200%;"></td>
+                  </tr>
+                  <tr>
+                    <td>Masa Manfaat</td>
+                    <td>&emsp;</td>
+                    <td><input class="form-control" type="text" name="masa_manfaat" placeholder="Dalam Tahun" style="color: black; width: 200%;"></td>
                   </tr>
                 </table>
               </div>

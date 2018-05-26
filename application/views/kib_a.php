@@ -30,9 +30,9 @@
               <tr>
                 <th>ID</th>
                 <th>Nama</th>
-                <th>Tahun</th>
-                <th>Status</th>
                 <th>Harga</th>
+                <th>Masa Manfaat</th>
+                <th>Penyusutan Akhir</th>
                 <?php if($this->session->userdata('level') == 'Admin'){ ?>
                 <th>Action</th>
                 <?php } ?>
@@ -58,13 +58,15 @@
                     data-sbarang="<?= $kiba->status_barang; ?>"
                     data-kondisi="<?= $kiba->kondisi; ?>"
                     data-korelasi="<?= $kiba->korelasi_dapodik; ?>"
-                    data-asal="<?= $kiba->asal_sekolah; ?>">
+                    data-asal="<?= $kiba->asal_sekolah; ?>"
+                    data-masa="<?= $kiba->masa_manfaat; ?>"
+                    data-penyusutan="<?= $kiba->penyusutan_akhir; ?>">
                     <?= $kiba->nama_barang; ?>
                   </a>
                 </td>
-                <td><?= $kiba->tahun_peroleh; ?></td>
-                <td><?= $kiba->status_hak; ?></td>
                 <td><?= $kiba->harga; ?></td>
+                <td><?= $kiba->masa_manfaat; ?></td>
+                <td><?= $kiba->penyusutan_akhir; ?></td>
                 <td>
                   <?php if($this->session->userdata('level') == 'Admin'){ ?>
                   <button type="button" class="btn btn-warning btnEdit" data-toggle="modal" data-target="#modal-warning" 
@@ -82,7 +84,9 @@
                       data-sbarang="<?= $kiba->status_barang; ?>"
                       data-kondisi="<?= $kiba->kondisi; ?>"
                       data-korelasi="<?= $kiba->korelasi_dapodik; ?>"
-                      data-asal="<?= $kiba->asal_sekolah; ?>">
+                      data-asal="<?= $kiba->asal_sekolah; ?>"
+                      data-masa="<?= $kiba->masa_manfaat; ?>"
+                      data-penyusutan="<?= $kiba->penyusutan_akhir; ?>">
                       Edit
                   </button>
                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger" data-id="<?= $kiba->id_barang; ?>">Hapus</button>
@@ -146,7 +150,7 @@
                   <tr>
                     <td>Cara Perolehan</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control kibaPerolehan"  type="text" name="perolehan" style="color: black; width: 250%;"></td>
+                    <td><input class="form-control kibaPerolehan"  type="text" name="cara_peroleh" style="color: black; width: 250%;"></td>
                   </tr>
                   <tr>
                     <td>Hak</td>
@@ -179,9 +183,9 @@
                     <td><input class="form-control kibaKorelasi"  type="text" name="korelasi_dapodik" style="color: black; width: 250%;"></td>
                   </tr>
                   <tr>
-                    <td>Asal Sekolah</td>
+                    <td>Masa Manfaat</td>
                     <td>&emsp;</td>
-                    <td><input class="form-control kibaAsal"  type="text" name="asal_sekolah" style="color: black; width: 250%;"></td>
+                    <td><input class="form-control kibaMasaManfaat"  type="text" name="masa_manfaat" style="color: black; width: 250%;"></td>
                   </tr>
                   <input type="hidden" name="id_barang" class="kibaId">
                 </table>
@@ -298,6 +302,16 @@
                     <td>&emsp;</td>
                     <td><input class="form-control kib_aAsal"  type="text" name="asal_sekolah" style="color: black; width: 250%;" disabled></td>
                   </tr>
+                  <tr>
+                    <td>Masa Manfaat</td>
+                    <td>&emsp;</td>
+                    <td><input class="form-control kib_aMasaManfaat"  type="text" name="masa_manfaat" style="color: black; width: 250%;" disabled=""></td>
+                  </tr>
+                  <tr>
+                    <td>Penyusutan Akhir</td>
+                    <td>&emsp;</td>
+                    <td><input class="form-control kib_aPenyusutan" type="text" name="penyusutan_akhir" style="color: black; width: 250%;" disabled=""></td>
+                  </tr>
                 </table>
               </div>
               <div class="modal-footer">
@@ -395,6 +409,11 @@
                     <td>Asal Sekolah</td>
                     <td>&emsp;</td>
                     <td><input class="form-control"  type="text" name="asal_sekolah" style="color: black; width: 250%;"></td>
+                  </tr>
+                  <tr>
+                    <td>Masa Manfaat</td>
+                    <td>&emsp;</td>
+                    <td><input class="form-control"  type="text" name="masa_manfaat" style="color: black; width: 250%;"></td>
                   </tr>
                 </table>
               </div>

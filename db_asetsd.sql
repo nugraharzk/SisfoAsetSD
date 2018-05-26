@@ -11,7 +11,7 @@
  Target Server Version : 100130
  File Encoding         : 65001
 
- Date: 26/05/2018 08:26:25
+ Date: 27/05/2018 04:26:38
 */
 
 SET NAMES utf8mb4;
@@ -43,8 +43,15 @@ CREATE TABLE `atb`  (
   `keterangan_inventarisasi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `data_diinventarisasi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `nilai_inventarisasi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `masa_manfaat` int(11) NOT NULL,
+  `penyusutan_akhir` int(11) NOT NULL,
   PRIMARY KEY (`id_barang`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of atb
+-- ----------------------------
+INSERT INTO `atb` VALUES ('2222', '', 'Buku Indonesia', 2018, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, 25000000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, 1944000);
 
 -- ----------------------------
 -- Table structure for kib_a
@@ -72,14 +79,15 @@ CREATE TABLE `kib_a`  (
   `keterangan_inventarisasi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `korelasi_dapodik` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `asal_sekolah` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `masa_manfaat` int(11) NOT NULL,
+  `penyusutan_akhir` int(11) NOT NULL,
   PRIMARY KEY (`id_barang`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of kib_a
 -- ----------------------------
-INSERT INTO `kib_a` VALUES ('0101110400257085708', '0003', 'Tanah Bangunan Pendidikan dan Latihan (Sekolah)', '814', 1998, 'Jl. Cigondewah Rahayu Kel/Desa. Cigondewah Rahayu Kec. Bandung Kulon / Wil. Tegallega Kota Bandung', 'Pakai', 'SDN 256 Cigondewah Hilir Bandung', 'Pembelian', '-', 'Inventaris', 'Baik', 412000000, '412000000\r\n', '-', '-', '412000000\r\n', '1', '-', 'ADA\r\n', 'SDN CIGONDEWAH HILIR\r\n');
-INSERT INTO `kib_a` VALUES ('0101110400257085709', '0004', 'Gedung RKB', '500', 2012, 'Jl. Cigondewah Rahayu Kel/Desa. Cigondewah Rahayu Kec. Bandung Kulon / Wil. Tegallega Kota Bandung', 'Pakai', 'Baik', 'Pembelian', '-', 'Inventaris', 'Baik', 412000000, '412000000\r\n', '-', '-', '412000000\r\n', '1', '-', 'ADA', 'SDN CIGONDEWAH HILIR\r\n');
+INSERT INTO `kib_a` VALUES ('123', '0003', 'Motor', '', 2018, '', '', '', '', '', '', '', 25000000, NULL, NULL, NULL, NULL, NULL, NULL, '', '', 10, 2684355);
 
 -- ----------------------------
 -- Table structure for kib_b
@@ -109,15 +117,15 @@ CREATE TABLE `kib_b`  (
   `posisi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `pemakai_barang` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `korelasi_dapodik` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `masa_manfaat` int(11) NOT NULL,
+  `penyusutan_akhir` int(11) NOT NULL,
   PRIMARY KEY (`id_barang`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of kib_b
 -- ----------------------------
-INSERT INTO `kib_b` VALUES ('0206020100112995331299533', '0001', 'Lemari Kayu Jati', 'Kayu ', '1.8', 'Kayu \r\n', 2016, '-', 'Hadiah', 'Hibah', 'BOS APBN', 'Inventaris', 'Baik', 900000, '-', '900000', '-', '-', '1', ' 900,000 ', 'Ruang Guru', '-', 'ADA');
-INSERT INTO `kib_b` VALUES ('0206020100112995331299534', '0001', 'Lemari Kayu Pohon', 'Kayu ', '1.8', 'Kayu \r\n', 2018, '-', 'Hadiah', 'Hibah', 'BOS APBN', 'Inventaris', 'Baik', 900000, '-', '900000', '-', '-', '1', ' 900,000 ', 'Ruang Guru', '-', 'ADA');
-INSERT INTO `kib_b` VALUES ('0206020100112995331299535', '0006', 'Papan Tulis', '', NULL, NULL, 2010, '', '', '', '', '', '', 100000, '', '', '', '', '', '', '', '', '');
+INSERT INTO `kib_b` VALUES ('0206020100112995331299533', '0003', 'Lemari Kayu', '', NULL, NULL, 2018, '', '', '', '', '', '', 25000000, '', '', '', '', '', '', '', '', '', 5, 1944000);
 
 -- ----------------------------
 -- Table structure for kib_c
@@ -153,8 +161,15 @@ CREATE TABLE `kib_c`  (
   `nama_gedung` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `bangunan_induk` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `korelasi_dapodik` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `masa_manfaat` int(11) NOT NULL,
+  `penyusutan_akhir` int(11) NOT NULL,
   PRIMARY KEY (`id_barang`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of kib_c
+-- ----------------------------
+INSERT INTO `kib_c` VALUES ('123123', '', 'Lemari Kayu', 2018, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 20000000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 10, 2147484);
 
 -- ----------------------------
 -- Table structure for kib_d
@@ -186,8 +201,15 @@ CREATE TABLE `kib_d`  (
   `data_diinventarisasi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `nilai_inventarisasi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `korelasi_dapodik` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `masa_manfaat` int(11) NOT NULL,
+  `penyusutan_akhir` int(11) NOT NULL,
   PRIMARY KEY (`id_barang`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of kib_d
+-- ----------------------------
+INSERT INTO `kib_d` VALUES ('321321', '', 'Buku Bagus', 2018, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 25000000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 5, 1944000);
 
 -- ----------------------------
 -- Table structure for kib_e
@@ -222,8 +244,15 @@ CREATE TABLE `kib_e`  (
   `ruangan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `keterangan_inventarisasi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `korelasi_dapodik` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `masa_manfaat` int(11) NOT NULL,
+  `penyusutan_akhir` int(11) NOT NULL,
   PRIMARY KEY (`id_barang`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of kib_e
+-- ----------------------------
+INSERT INTO `kib_e` VALUES ('123123', '', 'Buku Indonesia', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2018, NULL, NULL, NULL, NULL, NULL, 25000000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 8, 2502823);
 
 -- ----------------------------
 -- Table structure for kib_f
@@ -255,8 +284,15 @@ CREATE TABLE `kib_f`  (
   `data_diinventarisasi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `nilai_inventarisasi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `keterangan_inventarisasi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `masa_manfaat` int(11) NOT NULL,
+  `penyusutan_akhir` int(11) NOT NULL,
   PRIMARY KEY (`id_barang`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of kib_f
+-- ----------------------------
+INSERT INTO `kib_f` VALUES ('333', '', 'Barang', 2020, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2000000, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 10, 214748);
 
 -- ----------------------------
 -- Table structure for kir_kantor
@@ -278,15 +314,15 @@ CREATE TABLE `kir_kantor`  (
   `keadaan_barang_rusak_berat` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `keterangan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `penggunaan` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `masa_manfaat` int(11) NOT NULL,
+  `penyusutan_akhir` int(11) NOT NULL,
   PRIMARY KEY (`id_barang`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2147483648 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 10001102 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of kir_kantor
 -- ----------------------------
-INSERT INTO `kir_kantor` VALUES (33, 'Motor', NULL, NULL, NULL, NULL, 2018, NULL, 3, 1000000000, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `kir_kantor` VALUES (222, 'Radio Tape', NULL, NULL, NULL, NULL, 1990, NULL, 1, 1000, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `kir_kantor` VALUES (10001101, 'Sapu', 'Changhong', '0110', '2000', 'Bagus', 2002, '0101', 1, 20000, '20000', '-', '-', '-', 'Baik');
+INSERT INTO `kir_kantor` VALUES (1, 'Motor', NULL, NULL, NULL, NULL, 2002, NULL, 1, 20000000, NULL, NULL, NULL, NULL, NULL, 10, 2147484);
 
 -- ----------------------------
 -- Table structure for notifikasi
@@ -297,7 +333,7 @@ CREATE TABLE `notifikasi`  (
   `pesan` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `waktu` timestamp(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of notifikasi
@@ -314,6 +350,25 @@ INSERT INTO `notifikasi` VALUES (12, 'Pengadaan KIR KANTOR Baru : Radio Tape', '
 INSERT INTO `notifikasi` VALUES (13, 'Penghapusan  Pada KIB A', '2018-05-26 03:15:56.565559');
 INSERT INTO `notifikasi` VALUES (14, 'Penghapusan Barangku Pada KIR KANTOR', '2018-05-26 03:22:27.777365');
 INSERT INTO `notifikasi` VALUES (15, 'Pengadaan KIR KANTOR Baru : Motor', '2018-05-26 03:23:47.444855');
+INSERT INTO `notifikasi` VALUES (16, 'Pengadaan KIR KANTOR Baru : Motor', '2018-05-27 02:47:32.448663');
+INSERT INTO `notifikasi` VALUES (17, 'Penghapusan Sapu Pada KIR KANTOR', '2018-05-27 02:49:34.953258');
+INSERT INTO `notifikasi` VALUES (18, 'Penghapusan Motor Pada KIR KANTOR', '2018-05-27 02:49:37.774095');
+INSERT INTO `notifikasi` VALUES (19, 'Penghapusan Radio Tape Pada KIR KANTOR', '2018-05-27 02:49:42.633796');
+INSERT INTO `notifikasi` VALUES (20, 'Penghapusan Motor Pada KIR KANTOR', '2018-05-27 02:49:45.773648');
+INSERT INTO `notifikasi` VALUES (21, 'Pengadaan KIR KANTOR Baru : Motor', '2018-05-27 02:50:12.677978');
+INSERT INTO `notifikasi` VALUES (22, 'Penghapusan Gedung RKB Pada KIB A', '2018-05-27 03:05:36.214976');
+INSERT INTO `notifikasi` VALUES (23, 'Penghapusan Tanah Bangunan Pendidikan dan Latihan (Sekolah) Pada KIB A', '2018-05-27 03:05:38.535838');
+INSERT INTO `notifikasi` VALUES (24, 'Pengadaan KIB A Baru : Barang A', '2018-05-27 03:08:55.843911');
+INSERT INTO `notifikasi` VALUES (25, 'Pengadaan KIB A Baru : Motor', '2018-05-27 03:11:55.503079');
+INSERT INTO `notifikasi` VALUES (26, 'Pengadaan KIB C Baru : Lemari Kayu', '2018-05-27 03:51:57.555359');
+INSERT INTO `notifikasi` VALUES (27, 'Pengadaan KIB D Baru : Buku Bagus', '2018-05-27 03:59:10.914909');
+INSERT INTO `notifikasi` VALUES (28, 'Pengadaan KIB E Baru : Buku Indonesia', '2018-05-27 04:12:05.837844');
+INSERT INTO `notifikasi` VALUES (29, 'Pengadaan KIB F Baru : Barang', '2018-05-27 04:15:07.027936');
+INSERT INTO `notifikasi` VALUES (30, 'Pengadaan ATB Baru : Buku Indonesia', '2018-05-27 04:17:15.592698');
+INSERT INTO `notifikasi` VALUES (31, 'Penghapusan Papan Tulis Pada KIB B', '2018-05-27 04:24:53.356250');
+INSERT INTO `notifikasi` VALUES (32, 'Penghapusan Lemari Kayu Pohon Pada KIB B', '2018-05-27 04:24:56.141086');
+INSERT INTO `notifikasi` VALUES (33, 'Penghapusan Lemari Kayu Jati Pada KIB B', '2018-05-27 04:24:58.759969');
+INSERT INTO `notifikasi` VALUES (34, 'Pengadaan KIB B Baru : Lemari Kayu', '2018-05-27 04:25:19.385674');
 
 -- ----------------------------
 -- Table structure for users

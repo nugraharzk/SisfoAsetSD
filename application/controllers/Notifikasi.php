@@ -26,7 +26,7 @@ class Notifikasi extends CI_Controller {
 		$config = array();
         $config["base_url"] = site_url('notifikasi/index');
         $config["total_rows"] = $this->M_Notifikasi->get_jumlah_records();
-        $config["per_page"] = 5;
+        $config["per_page"] = 10;
         $config["uri_segment"] = 3;
         $config['num_links'] = 3;
         $config['full_tag_open'] = '<ul class="pagination pagination-sm no-margin pull-right">';
@@ -45,8 +45,8 @@ class Notifikasi extends CI_Controller {
 		$config['prev_link'] = 'Back';
 		$config['prev_tag_open'] = '<li>';
 		$config['prev_tag_close'] = '</li>';
-		$config['cur_tag_open'] = '<li><a href="#">';
-		$config['cur_tag_close'] = '</a></li>';
+		$config['cur_tag_open'] = '<li><a href="#"><b>';
+		$config['cur_tag_close'] = '</b></a></li>';
 
 		$this->pagination->initialize($config);
 		

@@ -14,6 +14,8 @@ $(document).on("click", '.btnInfo', function(e){
 	var kondisi = $(this).data('kondisi');
 	var korelasi = $(this).data('korelasi');
 	var asal = $(this).data('asal');
+	var masa = $(this).data('masa');
+	var penyusutan = $(this).data('penyusutan');
 
 	$(".kib_aId").val(id);
 	$(".kib_aReg").val(reg);
@@ -30,6 +32,8 @@ $(document).on("click", '.btnInfo', function(e){
 	$(".kib_aKondisi").val(kondisi);
 	$(".kib_aKorelasi").val(korelasi);
 	$(".kib_aAsal").val(asal);
+	$(".kib_aMasaManfaat").val(masa);
+	$(".kib_aPenyusutan").val(penyusutan);
 });
 
 $(document).on( "click", '.btnEdit',function(e) {
@@ -48,6 +52,8 @@ $(document).on( "click", '.btnEdit',function(e) {
 	var kondisi = $(this).data('kondisi');
 	var korelasi = $(this).data('korelasi');
 	var asal = $(this).data('asal');
+	var masa = $(this).data('masa');
+	var penyusutan = $(this).data('penyusutan');
 
 	$(".kibaId").val(id);
 	$(".kibaReg").val(reg);
@@ -64,6 +70,8 @@ $(document).on( "click", '.btnEdit',function(e) {
 	$(".kibaKondisi").val(kondisi);
 	$(".kibaKorelasi").val(korelasi);
 	$(".kibaAsal").val(asal);
+	$(".kibaMasaManfaat").val(masa);
+	$(".kibaPenyusutan").val(penyusutan);
 });
 
 $(document).on("click", '.btnDelete', function(e) {

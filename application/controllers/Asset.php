@@ -66,6 +66,9 @@ class Asset extends CI_Controller {
 	public function tambahKibA()
 	{
 		$input = $this->input->post();
+
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
 		
 		$this->M_Asset->insertKibA($input);
 		$data['table'] = 'KIB A';
@@ -79,7 +82,9 @@ class Asset extends CI_Controller {
 	public function editKIBA()
 	{
 		$id = $this->input->post('id_barang');
-		$input = $this->input->post(array('nama_barang','luas','tahun_peroleh','status_hak','penggunaan'));
+		$input = $this->input->post();
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
 		$this->M_Asset->updateKIBA($id,$input);
 		redirect('asset/kib_a');
 	}
@@ -144,7 +149,8 @@ class Asset extends CI_Controller {
 	public function tambahKibB()
 	{
 		$input = $this->input->post();
-		
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
 		$this->M_Asset->insertKibB($input);
 		$data['table'] = 'KIB B';
 		$data['row'] = $input['nama_barang'];
@@ -157,6 +163,8 @@ class Asset extends CI_Controller {
 	public function editKibB()
 	{
 		$id = $this->input->post('id_barang');
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
 		$input = $this->input->post();
 		$this->M_Asset->updateKibB($id,$input);
 
@@ -202,8 +210,8 @@ class Asset extends CI_Controller {
 		$config['prev_link'] = 'Back';
 		$config['prev_tag_open'] = '<li>';
 		$config['prev_tag_close'] = '</li>';
-		$config['cur_tag_open'] = '<li><a href="#">';
-		$config['cur_tag_close'] = '</a></li>';
+		$config['cur_tag_open'] = '<b>';
+		$config['cur_tag_close'] = '</b>';
 
 		$this->pagination->initialize($config);
 		
@@ -211,6 +219,7 @@ class Asset extends CI_Controller {
 		$dat['asset'] = $this->M_Asset->getAsset("kir_kantor",$config["per_page"],$page);
 		
 		$dat['links'] = $this->pagination->create_links();
+		$dat['depresi'] = $this->depreciationMethod($dat['asset'][0]->tahun_beli, $dat['asset'][0]->harga, null);
 
 		$dat['pageid'] = 'kirkantor';
 		$dat['page_title'] = 'KIR KANTOR';
@@ -223,6 +232,10 @@ class Asset extends CI_Controller {
 	public function tambahKir()
 	{
 		$input = $this->input->post();
+
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], '');
+
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
 		
 		$this->M_Asset->insertKir($input);
 		$data['table'] = 'KIR KANTOR';
@@ -236,7 +249,11 @@ class Asset extends CI_Controller {
 	public function editKir()
 	{
 		$id = $this->input->post('id_barang');
+		
 		$input = $this->input->post();
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], '');
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
+
 		$this->M_Asset->updateKir($id,$input);
 
 		redirect('asset/kir_kantor');
@@ -302,7 +319,8 @@ class Asset extends CI_Controller {
 	public function tambahKibc()
 	{
 		$input = $this->input->post();
-		
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
 		$this->M_Asset->insertKibc($input);
 		$data['table'] = 'KIB C';
 		$data['row'] = $input['nama_barang'];
@@ -316,6 +334,8 @@ class Asset extends CI_Controller {
 	{
 		$id = $this->input->post('id_barang');
 		$input = $this->input->post();
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
 		$this->M_Asset->updateKibc($id,$input);
 
 		redirect('asset/kib_c');
@@ -378,6 +398,44 @@ class Asset extends CI_Controller {
 		$this->load->view('layouts/layout',$data);
 	}
 
+	public function tambahKibd()
+	{
+		$input = $this->input->post();
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
+		$this->M_Asset->insertKibd($input);
+		$data['table'] = 'KIB D';
+		$data['row'] = $input['nama_barang'];
+
+		$this->M_Notifikasi->insertNotif(1,$data);
+
+		redirect('asset/kib_d');
+	}
+
+	public function editKibd()
+	{
+		$id = $this->input->post('id_barang');
+		$input = $this->input->post();
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
+		$this->M_Asset->updateKibd($id,$input);
+
+		redirect('asset/kib_d');
+	}
+
+	public function deleteKibd($id)
+	{
+		$asset = $this->M_Asset->getOneKibd($id);
+		$this->M_Asset->deleteKibd($id);
+
+		$data['table'] = 'KIB D';
+		$data['row'] = $asset->nama_barang;
+
+		$this->M_Notifikasi->insertNotif(2,$data);
+
+		redirect('asset/kib_d');
+	}
+
 	public function kib_e()
 	{
 		$this->session->set_userdata('page',7);
@@ -420,6 +478,44 @@ class Asset extends CI_Controller {
 		$data['page'] = $this->load->view('kib_e', $dat, true);
 
 		$this->load->view('layouts/layout',$data);
+	}
+
+	public function tambahKibe()
+	{
+		$input = $this->input->post();
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
+		$this->M_Asset->insertKibe($input);
+		$data['table'] = 'KIB E';
+		$data['row'] = $input['nama_barang'];
+
+		$this->M_Notifikasi->insertNotif(1,$data);
+
+		redirect('asset/kib_e');
+	}
+
+	public function editKibe()
+	{
+		$id = $this->input->post('id_barang');
+		$input = $this->input->post();
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
+		$this->M_Asset->updateKibe($id,$input);
+
+		redirect('asset/kib_e');
+	}
+
+	public function deleteKibe($id)
+	{
+		$asset = $this->M_Asset->getOneKibe($id);
+		$this->M_Asset->deleteKibe($id);
+
+		$data['table'] = 'KIB E';
+		$data['row'] = $asset->nama_barang;
+
+		$this->M_Notifikasi->insertNotif(2,$data);
+
+		redirect('asset/kib_e');
 	}
 
 	public function kib_f()
@@ -466,6 +562,44 @@ class Asset extends CI_Controller {
 		$this->load->view('layouts/layout',$data);
 	}
 
+	public function tambahKibf()
+	{
+		$input = $this->input->post();
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
+		$this->M_Asset->insertKibf($input);
+		$data['table'] = 'KIB F';
+		$data['row'] = $input['nama_barang'];
+
+		$this->M_Notifikasi->insertNotif(1,$data);
+
+		redirect('asset/kib_f');
+	}
+
+	public function editKibf()
+	{
+		$id = $this->input->post('id_barang');
+		$input = $this->input->post();
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
+		$this->M_Asset->updateKibf($id,$input);
+
+		redirect('asset/kib_f');
+	}
+
+	public function deleteKibf($id)
+	{
+		$asset = $this->M_Asset->getOneKibf($id);
+		$this->M_Asset->deleteKibf($id);
+
+		$data['table'] = 'KIB F';
+		$data['row'] = $asset->nama_barang;
+
+		$this->M_Notifikasi->insertNotif(2,$data);
+
+		redirect('asset/kib_f');
+	}
+
 	public function atb()
 	{
 		$this->session->set_userdata('page',9);
@@ -508,6 +642,77 @@ class Asset extends CI_Controller {
 		$data['page'] = $this->load->view('atb', $dat, true);
 
 		$this->load->view('layouts/layout',$data);
+	}
+
+	public function tambahAtb()
+	{
+		$input = $this->input->post();
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
+		$this->M_Asset->insertAtb($input);
+		$data['table'] = 'ATB';
+		$data['row'] = $input['nama_barang'];
+
+		$this->M_Notifikasi->insertNotif(1,$data);
+
+		redirect('asset/atb');
+	}
+
+	public function editAtb()
+	{
+		$id = $this->input->post('id_barang');
+		$input = $this->input->post();
+		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
+		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
+		$this->M_Asset->updateAtb($id,$input);
+
+		redirect('asset/atb');
+	}
+
+	public function deleteAtb($id)
+	{
+		$asset = $this->M_Asset->getOneAtb($id);
+		$this->M_Asset->deleteAtb($id);
+
+		$data['table'] = 'ATB';
+		$data['row'] = $asset->nama_barang;
+
+		$this->M_Notifikasi->insertNotif(2,$data);
+
+		redirect('asset/atb');
+	}
+
+
+	public function depreciationMethod($year,$price,$acc=0)
+	{
+		for ($i=0; $i < $year; $i++) { 
+			if ($i == 0) {
+				$weight = ((100/$year * 2)/100) * $price;
+				$acc = $acc + $weight;
+				$total = $price - $acc;
+
+				$data[$i]['beban'] = $weight;
+				$data[$i]['acc'] = $acc;
+				$data[$i]['total'] = $total;
+			}
+			else{
+				$weight = ((100/$year * 2)/100) * $total;
+				$acc = $acc + $weight;
+				$total = $price - $acc;
+
+				$data[$i]['beban'] = $weight;
+				$data[$i]['acc'] = $acc;
+				$data[$i]['total'] = $total;
+			}
+
+			/*print_r($data[$i]['beban']."   ");
+			print_r($data[$i]['acc']."   ");
+			print_r($data[$i]['total']."<br>");*/
+		}
+
+		$data['jumlah'] = $i;
+
+		return $data;
 	}
 }
 
