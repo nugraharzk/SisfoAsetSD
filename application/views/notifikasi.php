@@ -39,6 +39,7 @@
 			</div>
 
 			<div class="box-footer clearfix">
+				<a href="<?= site_url('notifikasi/print'); ?>" class="btn btn-success pull-left">Print Notifikasi</a>
 				<?= $paging; ?>
 			</div>
 		</div>
