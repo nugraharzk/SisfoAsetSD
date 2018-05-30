@@ -15,7 +15,7 @@ class Auth extends CI_Controller {
 	// List all your items
 	public function index()
 	{
-		$data['page_title'] = 'Sisfo Aset';
+		$data['page_title'] = 'Pengelola Barang Milik Daerah';
 		$data['page_desc'] = 'Login Page';
 		// $data['user'] = $this->m_auth->get_id_row($id);
 		// $data['page'] = $this->load->view('login','',true);

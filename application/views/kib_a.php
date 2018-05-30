@@ -99,6 +99,7 @@
         </div>
 
         <div class="box-footer clearfix">
+          <a href="<?= site_url('asset/printLaporan'); ?>" class="btn btn-success pull-left">Print Laporan</a>
           <?php echo $links ?>
         </div>
       </div>

@@ -74,7 +74,7 @@
 			</div>
 
       <div class="box-footer clearfix">
-        
+        <a class="btn btn-success pull-left" href="<?= site_url('asset/printLaporan'); ?>">Print Laporan</a>
       </div>
 		</div>
 	</section>

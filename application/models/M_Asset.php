@@ -29,6 +29,11 @@ class M_Asset extends CI_Model {
 		return $this->db->select('*')->where('id_barang',$id)->get('kir_kantor')->row();
 	}
 
+	public function getAllAsset($table)
+	{
+		return $this->db->get($table)->result();
+	}
+
 	public function getAsset($table,$limit,$start)
 	{
 		$this->db->limit($limit, $start);
