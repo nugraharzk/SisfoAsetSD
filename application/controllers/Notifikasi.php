@@ -70,7 +70,7 @@ class Notifikasi extends CI_Controller {
 		$this->M_Notifikasi->insertNotif($id);
 	}
 
-	public function print()
+	public function printNotifikasi()
 	{
 		$tabel = "Notifikasi";
 
