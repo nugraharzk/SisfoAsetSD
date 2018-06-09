@@ -98,6 +98,7 @@
           data-masa="<?= $kibb->masa_manfaat; ?>"
           data-penyusutan="<?= $kibb->penyusutan_akhir; ?>"
           data-pemakai_barang="<?= $kibb->pemakai_barang; ?>"
+          data-masa_manfaat="<?= $kibb->masa_manfaat; ?>"
           data-korelasi="<?= $kibb->korelasi_dapodik; ?>">
                       Edit
                   </button>

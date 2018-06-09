@@ -72,6 +72,7 @@ $(document).on( "click", '.btnEdit',function(e) {
 	var posisi = $(this).data('posisi');
 	var pemakai_barang = $(this).data('pemakai_barang');
 	var korelasi = $(this).data('korelasi');
+	var masa_manfaat = $(this).data('masa_manfaat');
 
 	$(".kibbId").val(id);
 	$(".kibbReg").val(reg);
@@ -96,6 +97,7 @@ $(document).on( "click", '.btnEdit',function(e) {
 	$(".kibbPosisi").val(posisi);
 	$(".kibbPemakai").val(pemakai_barang);
 	$(".kibbKorelasi").val(korelasi);
+	$(".kibbMasaManfaat").val(masa_manfaat);
 });
 
 $(document).on("click", '.btnDelete', function(e) {

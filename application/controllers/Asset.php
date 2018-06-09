@@ -163,9 +163,9 @@ class Asset extends CI_Controller {
 	public function editKibB()
 	{
 		$id = $this->input->post('id_barang');
+		$input = $this->input->post();
 		$depresi = $this->depreciationMethod($input['masa_manfaat'], $input['harga'], 0);
 		$input['penyusutan_akhir'] = $depresi[$depresi['jumlah']-1]['total'];
-		$input = $this->input->post();
 		$this->M_Asset->updateKibB($id,$input);
 
 		redirect('asset/kib_b');
